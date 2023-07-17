@@ -8,7 +8,11 @@ export interface IMyServer {
     get count(): number;
 }
 
-export class MyServer extends GModule implements IMyServer {
+import { Disposable } from "./common/lifecycle";
+
+export class MyServer extends Disposable {
+    
+    // onEvtCountChanged = this._register(new Emit())
     _count = 1;
 
     get count() {
@@ -17,5 +21,5 @@ export class MyServer extends GModule implements IMyServer {
     add() {
         this._count ++;
     }
-    
+
 }
