@@ -15,6 +15,10 @@ export const GModuleManager = new class extends DisposableMap<ServiceIdentifier<
         return this.get(modeIdentifier) as T;
     }
 
+    GetAll() {
+        return this.getStore();
+    }
+
     protected OnDispose() {
         this.dispose();
     }

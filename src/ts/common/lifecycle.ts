@@ -147,7 +147,6 @@ export class DisposableStore implements IDisposable {
 	public get isDisposed(): boolean {
 		return this._isDisposed;
 	}
-	
 
     public add<T extends IDisposable>(o: T): T {
         if (!o) return o;
@@ -264,7 +263,6 @@ export class RefCountedDisposable {
 		return this;
 	}
 }
-
 
 /**
  * A safe disposable can be `unset` so that a leaked reference (listener)
@@ -390,6 +388,10 @@ export class DisposableMap<K, V extends IDisposable = IDisposable> implements ID
 		} finally{
 			this._store.clear();
 		}
+	}
+
+	getStore() {
+		return this._store;
 	}
 
 	has(key: K) {

@@ -4,14 +4,24 @@ import { IMyServer, MyServer } from './MyServer';
 
 export const IDemoServer = createDecorator<DemoServer>('mod.DemoServer');
 
-export class DemoServer extends GModule {
+export interface IDemoServer {
+    setText(): void;
+    setCount(): void;
+}
+
+
+export class DemoServer extends GModule implements IDemoServer {
     _text = 'tesssss';
 
     @MyAnnotation
     _myServer111!: IMyServer;
 
+    get myServer() {
+        return GModuleManager.Get(IMyServer);
+    }
+
     constructor(
-        @IMyServer private readonly _myServer: IMyServer,
+        // @IMyServer private readonly _myServer: IMyServer,
     ) {
         super()
     }
@@ -37,6 +47,7 @@ export class DemoServer extends GModule {
     }
 
     public setCount() {
-        this._myServer.add();
+        this.myServer.add();
+        // this._myServer.add();
     }
 }

@@ -1,16 +1,32 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-
+import { GModuleManager } from '../ts/mods/GModuleManage';
+import { IMyServer } from '../ts/MyServer';
+import { IDemoServer } from '../ts/DemoServer';
 
 defineProps<{ msg: string }>()
 
+const serv = GModuleManager.Get(IMyServer);
+const demo = GModuleManager.Get(IDemoServer);
+
+console.log('serv---', serv);
+
+serv.onEvtCountChanged.listen(str => {
+  console.log('str---', str);
+  a.value = str;
+})
+
 const count = ref(0);
-const a = ref('anc')
+const a = ref('')
 
 function handleClick() {
   console.log('1');
-  a.value  += 'a'
+  // a.value  += 'a'
+  serv.add();
+}
+function handleClickDemo() {
+  demo.setCount();
 }
 
 </script>
@@ -25,6 +41,8 @@ function handleClick() {
     </p>
     <button type="button" @click="handleClick">CCCCLick</button>
     <p>{{ a }}</p>
+    <button type="button" @click="handleClickDemo">handleClickDemo</button>
+    <p>{{ serv.count }}</p>
   </div>
 
   <p>
