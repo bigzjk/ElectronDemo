@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
+import { MainClass } from '../src/ts/electron-main';
 
 // The built directory structure
 //
@@ -22,7 +23,10 @@ function createWindow() {
   win = new BrowserWindow({
     icon: path.join(process.env.PUBLIC, 'electron-vite.svg'),
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      devTools: true,
+      nodeIntegration: true,
+      contextIsolation: false
+      // preload: path.join(__dirname, 'preload.js'),
     },
   })
 
@@ -30,6 +34,12 @@ function createWindow() {
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', (new Date).toLocaleString())
   })
+
+  win.webContents.openDevTools();
+
+  const mainTs = new MainClass();
+  mainTs.Init();
+
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL)

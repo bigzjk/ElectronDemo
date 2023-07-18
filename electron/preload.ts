@@ -1,3 +1,5 @@
+import { ipcRenderer } from 'electron';
+
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise(resolve => {
     if (condition.includes(document.readyState)) {
@@ -11,6 +13,11 @@ function domReady(condition: DocumentReadyState[] = ['complete', 'interactive'])
     }
   })
 }
+
+ipcRenderer.on('bbb', (e) => {
+  console.log('112121');
+  
+})
 
 const safeDOM = {
   append(parent: HTMLElement, child: HTMLElement) {
