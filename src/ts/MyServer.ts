@@ -11,9 +11,7 @@ export interface IMyServer {
 
 export class MyServer extends GModule {
     
-    constructor(
-       
-    ) {
+    constructor() {
         super();
     }
 
