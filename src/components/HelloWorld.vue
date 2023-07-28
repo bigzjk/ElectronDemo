@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { GModuleManager } from '../ts/mods/GModuleManage';
-import { IMyServer } from '../ts/MyServer';
-import { IDemoServer } from '../ts/DemoServer';
-import { IShortcutServer } from '../ts/Shortcut/ShortcutServer';
+import { GModuleManager } from '@/ts/mods/GModuleManage';
+import { IMyServer } from '@/ts/MyServer';
+import { IDemoServer } from '@/ts/DemoServer';
+import { IShortcutServer } from '@/ts/Shortcut/ShortcutServer';
 
 defineProps<{ msg: string }>()
 
@@ -14,7 +14,7 @@ const shortcut = GModuleManager.Get(IShortcutServer);
 
 console.log('serv---', serv);
 
-const lis = serv.onEvtCountChanged.listen(str => {
+const lis = serv.onEvtCountChanged.listen((str: string) => {
   console.log('str---', str);
   a.value = str;
 });
@@ -44,7 +44,8 @@ function handleShortcut() {
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
-      Edit
+      Edit1
+      <a href="https://www.baidu.com" target="_blank"> baidu </a>
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
     <button type="button" @click="handleClick">CCCCLick</button>

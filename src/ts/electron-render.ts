@@ -8,6 +8,9 @@ import { DemoServer, IDemoServer } from './DemoServer';
 import { IShortcutServer } from './Shortcut/ShortcutServer';
 import { ShortcutServerRenderer } from './Shortcut/electron-renderer/ShortcutServerRenderer';
 
+import { IStorageServer } from './Storage/StorageServer';
+import { StorageServerRenderer } from './Storage/electron-renderer/StorageServerRenderer';
+
 export class MainClass {
     ServerMap = new Map<ServiceIdentifier<any>, GModule>();
 
@@ -20,6 +23,7 @@ export class MainClass {
         const shortcutServer = new ShortcutServerRenderer();
         shortcutServer.Init();
         GModuleManager.Register(IShortcutServer, shortcutServer);
+        GModuleManager.Register(IStorageServer, new StorageServerRenderer());
 
 
     }

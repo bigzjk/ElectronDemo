@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vue/runtime-core": "^3.3.4",
+    "electron-store": "^8.1.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {

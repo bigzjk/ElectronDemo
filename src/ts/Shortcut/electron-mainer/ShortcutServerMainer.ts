@@ -39,7 +39,7 @@ export class ShortcutServerMainer extends ShortcutServer {
         })
         const mm = Menu.getApplicationMenu();
         mm?.append(test);
-        Menu.setApplicationMenu(null);
+        Menu.setApplicationMenu(mm);
 
     }
 

@@ -15,8 +15,6 @@ let _modName2Id: Map<string, ServiceIdentifier<any>> = new Map<string, ServiceId
  * The *only* valid way to create a {{ServiceIdentifier}}.
  */
 export function createDecorator<T>(serviceId: string): ServiceIdentifier<T> {
-	console.log('serviceId---', serviceId);
-	
 	if (_modName2Id.has(serviceId)) {
 		return _modName2Id.get(serviceId)!;
 	}

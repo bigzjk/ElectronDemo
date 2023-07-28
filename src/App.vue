@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import StorageTest from './components/Storage.vue'
 </script>
 
 <template>
@@ -7,6 +8,8 @@ import HelloWorld from './components/HelloWorld.vue'
     1111
   </div>
   <HelloWorld msg="==" />
+  <hr>
+  <StorageTest />
 </template>
 
 <style scoped>
