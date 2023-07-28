@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { GModuleManager } from '@/ts/mods/GModuleManage';
 import { IStorageServer } from '@/ts/Storage/StorageServer';
 
 const storageServer = GModuleManager.Get(IStorageServer);
 
 const strText = ref('');
-const AAA = ref('');
-AAA.value = storageServer.Get('aaa');
+let AAA = ref('');
+AAA = computed(() => {
+    return storageServer.Get('aaa')
+})
+
+onMounted(() => {
+    strText.value = storageServer.Get('aaa')
+})
 
 function handleStorage() {
-    console.log('v000', strText);
-    console.log('storageServer', storageServer);
     storageServer.Set('aaa', strText.value);
-    // storageServer
 }
-
 
 
 </script>
@@ -26,7 +28,7 @@ function handleStorage() {
         <hr>
         <input type="text" v-model="strText">
         <button @click="handleStorage">设置Storage</button>
-        <div>获取storage的{{ AAA }}</div>
+        <div>获取storage的AAA:--{{ AAA }}</div>
     </div>
 </template>
 
