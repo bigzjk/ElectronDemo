@@ -1,8 +1,8 @@
-import { createDecorator, GModule, MyAnnotation } from './mods/GModule';
+import { createDecorator, ServiceIdentifier, GModule, MyAnnotation } from './mods/GModule';
 import { GModuleManager } from './mods/GModuleManage';
 import { IMyServer, MyServer } from './MyServer';
 
-export const IDemoServer = createDecorator<DemoServer>('mod.DemoServer');
+export const IDemoServer: ServiceIdentifier<DemoServer> = createDecorator<DemoServer>('mod.DemoServer');
 
 export interface IDemoServer {
     setText(): void;

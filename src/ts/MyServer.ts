@@ -1,7 +1,7 @@
-import { GModule, createDecorator } from './mods/GModule';
+import { GModule, ServiceIdentifier, createDecorator } from './mods/GModule';
 import { Emitter } from './common/event';
 
-export const IMyServer = createDecorator<MyServer>('mod.myServer');
+export const IMyServer: ServiceIdentifier<MyServer> = createDecorator<MyServer>('mod.myServer');
 
 export interface IMyServer {
     add(): void;

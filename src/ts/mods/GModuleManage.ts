@@ -1,7 +1,7 @@
 import { DisposableMap } from "../common/lifecycle";
 import { ServiceIdentifier, GModule } from './GModule';
 
-export const GModuleManager = new class extends DisposableMap<ServiceIdentifier<GModule>, GModule> {
+export const GModuleManager = new class extends DisposableMap<ServiceIdentifier<any>, GModule> {
 
     Register<T extends GModule>(modeIdentifier: ServiceIdentifier<T>, module: T) {
         this.set(modeIdentifier, module);

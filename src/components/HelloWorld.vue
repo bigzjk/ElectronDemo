@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { GModuleManager } from '@/ts/mods/GModuleManage';
-import { IMyServer } from '@/ts/MyServer';
-import { IDemoServer } from '@/ts/DemoServer';
-import { IShortcutServer } from '@/ts/Shortcut/ShortcutServer';
+import { GModuleManager } from '../ts/mods/GModuleManage';
+import { IMyServer } from '../ts/MyServer';
+import { IDemoServer } from '../ts/DemoServer';
+import { IShortcutServer } from '../ts/Shortcut/ShortcutServer';
 
 defineProps<{ msg: string }>()
 
