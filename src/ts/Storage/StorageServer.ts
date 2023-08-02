@@ -1,3 +1,5 @@
+import { Emitter, IEventHandler } from '../common/event';
+import { IDisposable } from '../common/lifecycle';
 import { ServiceIdentifier, createDecorator } from '../mods/GModule';
 import { GModule } from '../mods/GModule';
 export const IStorageServer: ServiceIdentifier<IStorageServer> = createDecorator('server.storage');
@@ -16,4 +18,5 @@ export interface IStorageServer extends GModule {
     Set(key: string, value: string): void;
     Get<T extends keyof IStorageData>(key: T, defalutValue?: string): IStorageData[T] | null;
     Get<T extends string>(key: Omit<keyof IStorageData, T>, defalutValue?: string): string;
+    onEvtStoreAnyChanged?: Emitter<any>
 }

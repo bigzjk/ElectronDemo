@@ -1,13 +1,14 @@
 <script setup lang="ts">
-
 import { ref } from 'vue'
+import { useRouter, useRoute} from 'vue-router';
 import { GModuleManager } from '../ts/mods/GModuleManage';
 import { IMyServer } from '../ts/MyServer';
 import { IDemoServer } from '../ts/DemoServer';
 import { IShortcutServer } from '../ts/Shortcut/ShortcutServer';
 
 defineProps<{ msg: string }>()
-
+const router = useRouter();
+const route = useRoute();
 const serv = GModuleManager.Get(IMyServer);
 const demo = GModuleManager.Get(IDemoServer);
 const shortcut = GModuleManager.Get(IShortcutServer);
@@ -38,6 +39,14 @@ function handleShortcut() {
   shortcut.aaa();
 }
 
+function handleGoStorage() {
+  // VueRouter.
+  // const a = useRouter()
+  console.log('a---', route);
+  
+  router.push('/storage')
+}
+
 </script>
 
 <template>
@@ -45,8 +54,6 @@ function handleShortcut() {
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit1
-      <a href="https://www.baidu.com" target="_blank"> baidu </a>
-      <code>components/HelloWorld.vue</code> to test HMR
     </p>
     <button type="button" @click="handleClick">CCCCLick</button>
     <p>{{ a }}</p>
@@ -55,6 +62,7 @@ function handleShortcut() {
   </div>
   <hr />
   <button type="button" @click="handleShortcut">shortcut</button>
+  <button type="button" @click="handleGoStorage">Storage</button>
   
 </template>
 

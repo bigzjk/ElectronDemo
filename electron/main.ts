@@ -37,7 +37,7 @@ function createWindow() {
   })
 
   const mainTs = new MainClass();
-  mainTs.Init();
+  mainTs.Init(win);
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL)

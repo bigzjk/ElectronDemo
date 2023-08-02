@@ -8,17 +8,18 @@ import { ShortcutServerMainer } from './Shortcut/electron-mainer/ShortcutServerM
 
 import { IStorageServer } from './Storage/StorageServer';
 import { StorageServerMainer } from './Storage/electron-mainer/StorageServerMainer';
+import { BrowserWindow } from 'electron';
 
 export class MainClass {
     ServerMap = new Map<ServiceIdentifier<any>, GModule>();
 
-    Init() {
+    Init(mainWindow: BrowserWindow ) {
         // const mod = getModName2IdMap();
         const shortcutServer = new ShortcutServerMainer();
         shortcutServer.Init();
         GModuleManager.Register(IShortcutServer, shortcutServer);
 
-        GModuleManager.Register(IStorageServer, new StorageServerMainer());
+        GModuleManager.Register(IStorageServer, new StorageServerMainer(mainWindow));
 
 
     }

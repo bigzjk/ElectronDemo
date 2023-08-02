@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import StorageTest from './components/Storage.vue'
+import { RouterView } from 'vue-router';
+// import HelloWorld from './components/HelloWorld.vue'
+// import StorageTest from './components/Storage.vue'
 </script>
-
 <template>
   <div>
-    1111
+    <RouterLink to="/">
+        <button >返回首页</button>
+    </RouterLink>
+    <RouterLink to="/storage">
+        <button >Storage</button>
+    </RouterLink>
+    <hr>
+    <RouterView></RouterView>
   </div>
-  <HelloWorld msg="==" />
+  <!-- <HelloWorld msg="==" />
   <hr>
-  <StorageTest />
+  <StorageTest /> -->
 </template>
 
 <style scoped>
