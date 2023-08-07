@@ -51,6 +51,7 @@ function handleGoStorage() {
 
 <template>
   <div class="card">
+    <h2>HelloWorld</h2>
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
       Edit1

@@ -9,16 +9,16 @@ const storageServer = GModuleManager.Get(IStorageServer);
 const strText = ref('');
 const Count = ref(0);
 let AAA = ref('');
-AAA = computed({
-    get() {
-        return storageServer.Get('aaa');
-    },
-    set(v: any) {
-        console.log('v---', v);
+// AAA = computed({
+//     get() {
+//         return storageServer.Get('aaa');
+//     },
+//     set(v: any) {
+//         console.log('v---', v);
         
-        storageServer.Set('aaa', v);
-    }
-})
+//         storageServer.Set('aaa', v);
+//     }
+// })
 let BBB = computed(() => {
     return Count.value + 100
 })
@@ -34,7 +34,7 @@ onMounted(() => {
 })
 
 function handleStorage() {
-    // storageServer.Set('aaa', strText.value);
+    storageServer.Set('aaa', strText.value);
     AAA.value = strText.value;
     storageServer.Set('info', {
         a: 'aaa',
@@ -58,7 +58,7 @@ function setCount() {
 
 <template>
     <div>
-        <h1>Storage</h1>
+        <h2>Storage</h2>
         <hr>
         <input type="text" v-model="strText">
         <button @click="handleStorage">设置Storage</button>
